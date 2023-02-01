@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+
+  <style>
+    body {
+    background: #e8cbc0;
+    background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4);
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    min-height: 100vh;
+}
+    .content {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      margin: auto;
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 5px;
+      justify-content: center;
+    }
+    .submit{
+        display: flex;
+        justify-content: space-around;
+    }
+    .inputs{
+        width: fit-content;
+        height: fit-content;
+        margin: 5px 5px 10px 10px
+    }
+    .submit button{
+        border-radius: 5px;
+    }
+    .submit button p{
+        margin-bottom: 2px;
+    }
+    .err{
+      width: fit-content;
+      height: fit-content;
+      background-color: beige;
+      margin-right: 20px;
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
+
+</head>
+
+     <!-- Navbar open -->
+     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-top: -5px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color:whitesmoke">Teacher-List</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/teachers" style="color: gray;">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- Navbar closed -->
+
+  <div class="content">
+ 
+    <%if(error){ %>
+      <div class="err">
+        <%error.split(",").forEach(el=>{%>
+          <p style="color: brown;">*<%=el%> ...!</p>
+        <%})%>
+      </div>
+      <%}%>
+
+  <!-- Add forms open -->
+  <form action="/teachers/add" method="post">
+<div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name" name="name" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">ID Card:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="id_card" name="idCard" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">pob (place of birth):</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="pob" name="pob" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1">dob (date of birth)</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="" name="dob" autocomplete="dob" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <label for="exampleFormControlInput1">Education</label>
+  <select class="form-select" aria-label="Default select example" name="education">
+    <option selected>Choose degree</option>
+    <option value="Master Degree">Master Degree</option>
+    <option value="Bachelor Degree">Bachelor Degree</option>
+    <option value="Diploma Degree">Diploma Degree</option>
+  </select>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email" name="email" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Phone Number:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="phone_number" name="phone" autocomplete="off">
+  </div>
+</div>
+
+  <div class="inputs">
+  <label for="exampleFormControlInput1" class="form-label">Subject:</label>
+  <select class="form-select" aria-label="Default select example" name="subject">
+    <option selected>Choose subject</option>
+    <option value="Math">Math</option>
+    <option value="Physics">Physics</option>
+    <option value="Sport">Sport</option>
+    <option value="English">English</option>
+  </select>
+</div>
+
+  <div class="inputs">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Profile Picture:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="profile_picture" name="profilePicture" autocomplete="off">
+  </div>
+</div>
+
+  
+  <div class="submit">
+    <a class="nav-link active" aria-current="page" href="/teachers/add"> <button type="submit" class="btn-info"><p style="color:white">Save</p></button></a>
+    <a class="nav-link active" aria-current="page" href="/teachers/add"> <button type="button" class="btn-danger"><p style="color:white">Cancel</p></button></a>
+  </div>
+</form>
+
+</div>
+  <!-- Add forms closed -->
+
+<!-- Footer open -->
+<body class="d-flex flex-column">
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; PatrickAndrada1</small>
+    </div>
+  </footer>
+</body>
+<!-- Footer closed -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

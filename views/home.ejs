@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Teacher-List</title>
+    <style>
+
+/* Style for container */
+.container{
+  margin: auto;
+  margin-top: 20px;
+}
+/* Style for  container closed */
+
+/* Style for Teachers card */
+body {
+    background: #e8cbc0;
+    background: -webkit-linear-gradient(to right, #e8cbc0, #636fa4);
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    min-height: 100vh;
+}
+/* Style for Teachers card  closed */
+
+/* Style for Filter block */
+.filterBlock{
+  width: 65%;
+  /* height: max-content; */
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+  /* background-color: beige; */
+}
+/* Style for Filter block closed */
+
+/* Style for add teacher */
+.addTeacher button{
+  border-radius: 5px;
+  margin-top: -5px;
+  margin-left: 15px;
+}
+/* Style for add teacher closed */
+
+</style>
+</head>
+<body>
+
+    <!-- Navbar open -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-top: -5px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color:whitesmoke">Teacher-List</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/teachers" style="color: gray;">Home</a>
+              </li>
+            </ul>
+          </div>
+
+      <!-- search open -->
+       <form action="?name" method="get" class="d-flex" role="search">
+        <input class="form-control me-2" type="text" placeholder="Search name" aria-label="Search" name="name" autocomplete="off">
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+      <!-- search closed -->
+        </div>
+      </nav>
+
+    <!-- Navbar closed -->
+ <!-- add teacher -->
+<div class="addTeacher">
+  <a href="/teachers/add"><button type="button" class="btn btn-outline-secondary">Add Teacher</button></a>
+</div>
+ 
+ <!-- add teacher closed -->
+    <!-- All Filters -->
+    <div class="filterBlock">
+                    <!-- filter by status -->
+                    <div class="filterPart">
+                      <form action="/?filter1" method="get">
+                        <div class="input-group mb-3">
+                            <select class="form-select" id="inputGroupSelect01" name="filter1">
+                              <option value="" selected disable>Choose Status</option>
+                              <option value="permanent">Permanent</option>
+                              <option value="contract">Contract</option>
+                            </select>
+                              <button type="submit" style="border: none; border-radius: 5px; transition: .1s; "><p style="color: rgb(203, 203, 203); margin-top: 2px; padding-top: 2px;">Filter Status</p></button>
+                        </div>
+                      </form>
+                      </div>
+                    <!-- filter by status closed -->
+      
+                    <!-- filter by subject -->
+                    <div class="filterPart">
+                      <form action="/?filter2" method="get">
+                        <div class="input-group mb-3">
+                            <select class="form-select" id="inputGroupSelect01" name="filter2">
+                              <option value="" selected disable>Choose Subject</option>
+                              <option value="Math">Math</option>
+                              <option value="Physics">Physics</option>
+                              <option value="Sport">Sport</option>
+                              <option value="English">English</option>
+                            </select>
+                              <button type="submit" style="border: 1px solid whitesmoke; border-radius: 5px; transition: .1s;"><p style="color: rgb(203, 203, 203); margin-top: 2px; padding-top: 2px;">Filter Subject</p></button>
+                        </div>
+                      </form>
+                      </div>
+                    <!-- filter by subject -->
+               
+                    <!-- filter by degree -->
+                    <div class="filterPart">
+                      <form action="/?filter3" method="get">
+                        <div class="input-group mb-3">
+                            <select class="form-select" id="inputGroupSelect01" name="filter3">
+                              <option value="" selected disable>Choose Degree</option>
+                              <option value="Master Degree">Master</option>
+                              <option value="Bachelor Degree">Bachelor</option>
+                              <option value="Diploma Degree">Diploma</option>
+                            </select>
+                              <button type="submit" style="border: 1px solid whitesmoke; border-radius: 5px; transition: .1s;"><p style="color: rgb(203, 203, 203); margin-top: 2px; padding-top: 2px;">Filter Degree</p></button>
+                        </div>
+                      </form>
+                      </div>
+                    <!-- filter by degree -->
+
+    </div>
+    <!-- All Filters closed -->
+
+    <!-- Count Board open -->
+    
+    <%let totalPermanent = 0%>
+    <%let totalContract = 0%>
+    <%let totalMath = 0%>
+    <%let totalPhysics = 0%>
+    <%let totalSport = 0%>
+    <%let totalEnglish = 0%>
+    <%let totalMaster = 0%>
+    <%let totalBachelor = 0%>
+    <%let totalDiploma = 0%>
+
+    <%result.forEach(el=>{%>
+      <%totalPermanent += el.totalPermanent%>
+      <%totalContract += el.totalContract%>
+      <%totalMath += el.totalMath%>
+      <%totalPhysics += el.totalPhysics%>
+      <%totalSport += el.totalSport%>
+      <%totalEnglish += el.totalEnglish%>
+      <%totalMaster += el.totalMaster%>
+      <%totalBachelor += el.totalBachelor%>
+      <%totalDiploma += el.totalDiploma%>
+    <%})%>
+    <div class="container">                    
+      <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-body text-center">
+                  <h5 class="card-title m-b-0">Static Table</h5>
+              </div>
+                  <div class="table-responsive">
+                      <table class="table" style="background-color:whitesmoke">
+                          <thead class="thead-light">
+                              <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col">Permanent</th>
+                                  <th scope="col">Contract</th>
+                                  <th scope="col">Math</th>
+                                  <th scope="col">Physics</th>
+                                  <th scope="col">Sport</th>
+                                  <th scope="col">English</th>
+                                  <th scope="col">Master</th>
+                                  <th scope="col">Bachelor</th>
+                                  <th scope="col">Diploma</th>
+                              </tr>
+                          </thead>
+                          <tbody class="customtable">
+                              <tr>
+                                  <td>Status</td>
+                                  <td><%=totalPermanent%></td>
+                                  <td><%=totalContract%></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  
+                              </tr>
+                              <tr>
+                                  <td>Subject</td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><%=totalMath%></td>
+                                  <td><%=totalPhysics%></td>
+                                  <td><%=totalSport%></td>
+                                  <td><%=totalEnglish%></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                              <tr>
+                                  <td>Education Degree</td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><%=totalMaster%></td>
+                                  <td><%=totalBachelor%></td>
+                                  <td><%=totalDiploma%></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+          </div>
+      </div>
+  </div>
+
+     </div> 
+
+      <tbody>
+
+      </tbody>
+    </table>
+
+    <!-- Count Board closed -->
+
+    <!-- Teachers' card open --> 
+    <div class="container">
+      <div class="row text-center">
+  
+          <!-- Team item -->
+          <%result.forEach(el=>{%>
+            <div class="col-xl-3 col-sm-6 mb-5">
+              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="<%=el.profilePicture%>" style="width: 100px; height: 100px; object-fit: scale-down; background-color: whitesmoke;" alt="" width="100" height="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0"><%=el.name%></h5><span class="small text-uppercase text-muted"></span>
+                <ul class="social mb-0 list-inline mt-3" style="background-color:whitesmoke; border-radius: 5px;">
+                  <li class="list-inline-item"><p>ID Card: <%=el.idCard%></p></li>
+                  <li class="list-inline-item"><p>POB: <%=el.pob%></p></li>
+                  <li class="list-inline-item"><p>DOB: <%=el.formatDateAgain%></p></li>
+                  <li class="list-inline-item"><p>Education: <%=el.education%></p></li>
+                  <li class="list-inline-item"><p>Email: <%=el.email%></p></li>
+                  <li class="list-inline-item"><p>Phone: <%=el.phone%></p></li>
+                  <li class="list-inline-item"><p>Subject: <%=el.subject%></p></li>
+                  <li class="list-inline-item"><p>Employee Status: <%=el.status%></p></li>
+                </ul>
+                <a href="/teachers/edit/<%=el.id%>" class="btn mr-2"><i class="fas fa-link"></i> <button type="button" class="btn btn-outline-info">Edit</button></a>
+                <a href="/teachers/delete/<%=el.id%>" class="btn"><i class="fab fa-github"></i><button type="button" class="btn btn-outline-danger">Delete</button></a>
+              </div>
+            </div>
+            <%})%>
+    </div>
+    </div>
+    <!-- Teachers' card closed -->
+
+<!-- Footer open -->
+<body class="d-flex flex-column">
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; PatrickAndrada1</small>
+    </div>
+  </footer>
+</body>
+<!-- Footer closed -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+    {
+        "name":"Teacher1",
+        "idCard":"3174051006123",
+        "pob":"Subang",
+        "dob": "1991-01-01",
+        "status":"contract",
+        "subject":"Math",
+        "education":"Bachelor Degree",
+        "email":"teacher1@gmail.com",
+        "phone":"0812345",
+        "profilePicture":"https://www.teacherbuilder.com/wp-content/uploads/2021/06/become-math-teacher-tx.jpg"
+    },
+    {
+        "name":"Teacher2",
+        "idCard":"3174051006456",
+        "pob":"Tanah Kusir",
+        "dob": "1992-02-02",
+        "status":"permanent",
+        "subject":"Sport",
+        "education":"Master Degree",
+        "email":"teacher2@gmail.com",
+        "phone":"0812345",
+        "profilePicture":"https://media.istockphoto.com/idCard/174861321/photo/female-basketball-coach.jpg?s=612x612&w=0&k=20&c=n8rFmHnlaMXeP72_pxElkkIpAyWd6-AwVPS8P4HaeUA="
+    },
+    {
+        "name":"Teacher3",
+        "idCard":"3174051006789",
+        "pob":"Tanjung Priok",
+        "dob": "1993-03-03",
+        "status":"contract",
+        "subject":"Physics",
+        "education":"Master Degree",
+        "email":"teacher3@gmail.com",
+        "phone":"0812345",
+        "profilePicture":"https://www.news.ucsb.edu/file/2965/download?token=yX1aD6BL"
+    },
+    {
+        "name":"Teacher4",
+        "idCard":"3174051006321",
+        "pob":"Ciamis",
+        "dob": "1994-04-04",
+        "status":"contract",
+        "subject":"English",
+        "education":"Bachelor Degree",
+        "email":"teacher4@gmail.com",
+        "phone":"0812345",
+        "profilePicture":"https://www.xploretefl.com/articles/wp-content/uploads/2018/12/teacher-greenboard.jpg"
+    }
+]
