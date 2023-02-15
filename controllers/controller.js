@@ -2,7 +2,9 @@ const { Teacher, Sequelize } = require("../models");
 class Controller {
   static home(req, res) {
     let { name, filter1, filter2, filter3 } = req.query;
-    let option = {};
+    let option = {
+      order: [['updatedAt', 'DESC']]
+    };
     if (filter1) {
       option.where = { status: filter1 };
     }
